@@ -20,6 +20,7 @@ alias grun='java org.antlr.v4.gui.TestRig'
 ### Windows
 
 1. Baixe o arquivo JAR do ANTLR [aqui](https://www.antlr.org/download/antlr-4.13.2-complete.jar) e coloque-o em um diretório, por exemplo `C:\antlr`.
+   
 2. Configure a variável de ambiente `CLASSPATH`:
 
    ```cmd
@@ -45,32 +46,39 @@ alias grun='java org.antlr.v4.gui.TestRig'
 
 ## 🧱 Passo 2: Gerar Lexer e Parser a partir da gramática `.g4`
 
-No seu projeto, o arquivo Lexer e Parser já está gerado no diretório `src/antlr4`. Garanta que os arquivos estejam no pacote `antlr4`. Para garantir que os arquivos sejam gerados no pacote correto, use o comando:
+Neste repositório, os arquivos 'Lexer' e 'Parser' já estão gerados no diretório `src/antlr4`. Caso queira gerá-los novamente, apenas garanta que estejam dentro do pacote 'antlr4'. Para garantir que os arquivos sejam gerados no pacote correto, use o comando:
 
 ```bash
 antlr4 -Dlanguage=Java Gramatica.g4 -o src/antlr4
 ```
 
-## 📋 Passo 3: Configurar o Eclipse (ou IDE de sua escolha)
+## 🎯 Passo 3: Compilar e Executar o Projeto
 
-1. Importe o projeto para o Eclipse ou configure manualmente o classpath com o JAR do ANTLR.
-2. Garanta que os arquivos gerados do ANTLR (Lexer e Parser) estejam acessíveis no classpath do projeto.
-3. Adicione o diretório `src/antlr4` às **source folders** do projeto.
+### Compilar o Código
 
-## 🎯 Passo 4: Executar o projeto
+Para compilar o código-fonte, use o comando `javac`:
+
+```bash
+javac -d bin -cp C:\antlr\antlr-4.13.2-complete.jar src\main\*.java src\antlr4\*.java
+```
 
 ### Linha de Comando
 
-Com o projeto configurado e o código Lexer e Parser gerado, execute a classe `CalcMain.java` com:
+Após compilar, execute a classe `CalcMain` com:
 
 ```bash
-java -cp .:/usr/local/lib/antlr-4.13.2-complete.jar main.CalcMain
+java -cp bin;C:\antlr\antlr-4.13.2-complete.jar main.CalcMain
 ```
 
 ### No Eclipse
 
-1. Clique com o botão direito na classe `CalcMain.java` dentro do Eclipse.
-2. Selecione `Run As` > `Java Application`.
+1. Certifique-se de que o JAR do ANTLR está incluído no build path do projeto:
+   - Clique com o botão direito no projeto no Eclipse.
+   - Selecione `Build Path` > `Configure Build Path`.
+   - Na aba `Libraries`, adicione o JAR do ANTLR (se ainda não estiver adicionado).
+
+2. Clique com o botão direito na classe `CalcMain.java` dentro do Eclipse.
+3. Selecione `Run As` > `Java Application`.
 
 Se o projeto estiver configurado corretamente, você verá a execução da calculadora diretamente no terminal ou na interface do Eclipse.
 
