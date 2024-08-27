@@ -18,7 +18,7 @@ public class CalcMain {
             System.out.println("Token stream criado.");
             // Cria um parser
             GramaticaParser parser = new GramaticaParser(tokens);
-            // Remove regras de escuta desnecessárias
+            // Remove regras de escuta desnecessÃ¡rias
             parser.removeErrorListeners();
             // Adiciona um listener personalizado para tratar os eventos do parser
             parser.addErrorListener(new BaseErrorListener() {
@@ -28,10 +28,10 @@ public class CalcMain {
                 }
             });
             System.out.println("Parser criado.");
-            // Inicia a análise sintática
+            // Inicia a anÃ¡lise sintÃ¡tica
             ParseTree tree = parser.prog();
-            System.out.println("Análise sintática iniciada.");
-            // Percorre a árvore sintática
+            System.out.println("AnÃ¡lise sintÃ¡tica iniciada.");
+            // Percorre a Ã¡rvore sintÃ¡tica
             ParseTreeWalker walker = new ParseTreeWalker();
             System.out.println("Walker criado.");
             CalcListener listener = new CalcListener();

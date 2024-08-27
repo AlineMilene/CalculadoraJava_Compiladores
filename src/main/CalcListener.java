@@ -21,7 +21,7 @@ public class CalcListener extends GramaticaBaseListener {
     @Override
     public void exitPrintStmt(GramaticaParser.PrintStmtContext ctx) {
         double result = visit(ctx.expr());
-        System.out.println("Resultado da express„o de impress„o: " + df.format(result));
+        System.out.println("Resultado da express√£o de impress√£o: " + df.format(result));
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CalcListener extends GramaticaBaseListener {
         String id = ctx.ID().getText();
         double value = visit(ctx.expr());
         variables.put(id, value);
-        System.out.println("AtribuiÁ„o: " + id + " = " + df.format(value));
+        System.out.println("Atribui√ß√£o: " + id + " = " + df.format(value));
     }
 
     private double visit(ParseTree ctx) {
@@ -57,14 +57,14 @@ public class CalcListener extends GramaticaBaseListener {
             String id = ctx.getText();
             Double value = variables.get(id);
             if (value == null) {
-                System.err.println("Erro: Vari·vel '" + id + "' n„o declarada.");
-                return 0.0; // Valor padr„o para vari·veis n„o declaradas
+                System.err.println("Erro: Vari√°vel '" + id + "' n√£o declarada.");
+                return 0.0; // Valor padr√£o para vari√°veis n√£o declaradas
             }
             return value;
         } else if (ctx instanceof GramaticaParser.NumberContext) {
             return Double.parseDouble(ctx.getText());
         } else {
-            throw new RuntimeException("Tipo de express„o inesperado: " + ctx.getClass().getSimpleName());
+            throw new RuntimeException("Tipo de express√£o inesperado: " + ctx.getClass().getSimpleName());
         }
     }
 }
