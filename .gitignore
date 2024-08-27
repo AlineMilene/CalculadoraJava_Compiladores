@@ -1,0 +1,11 @@
+# Ignore the bin directory
+bin/
+
+# Ignore Eclipse settings
+.settings/
+
+# Ignore build artifacts
+*.class
+
+# Ignore the ANTLR JAR if you prefer to download it separately
+antl4-4.13.2-complete.jar
