@@ -29,9 +29,7 @@ public class CalcMain {
                 if (!inputText.matches(".*\\bprint\\(.*\\).*")) {
                     inputText = "print(" + inputText + ")";
                 }
-
-                // Adiciona uma quebra de linha no final da expressão
-                inputText = inputText + "\n";
+                inputText += "\n";
 
                 CharStream input = CharStreams.fromString(inputText);
                 GramaticaLexer lexer = new GramaticaLexer(input);
@@ -48,12 +46,23 @@ public class CalcMain {
                 });
 
                 ParseTree tree = parser.prog();
+
+                // Verifica se houve erros de sintaxe antes de prosseguir
+                if (parser.getNumberOfSyntaxErrors() > 0) {
+                    System.out.println();
+                    continue; // Pular para a próxima iteração do loop para ler nova entrada
+                }
+
                 ParseTreeWalker walker = new ParseTreeWalker();
                 CalcListener listener = new CalcListener();
                 walker.walk(listener, tree);
 
-                // Sempre exibe o resultado da expressão processada
-                System.out.println("Resultado da expressão: " + listener.getResult());
+                // Exibe o resultado da expressão processada
+                if (!listener.hasError()) {
+                    if (!inputText.matches(".*\\bprint\\(.*\\).*")) {
+                        System.out.println("Resultado da expressão: " + listener.getResult());
+                    }
+                }
 
                 System.out.println(); // Linha em branco para separar a saída
             }
