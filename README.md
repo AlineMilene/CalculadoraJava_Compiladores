@@ -2,6 +2,8 @@
 
 Este projeto é uma calculadora simples desenvolvida em Java utilizando o ANTLR 4.13.2 para análise e interpretação de expressões aritméticas, variáveis e comandos de entrada e saída.
 
+![demo](./video/Demo_CalculadoraJava.gif)
+
 ## 🛠️ Passo 1: Instalar o ANTLR 4.13.2
 
 Siga as instruções de instalação de acordo com seu sistema operacional:
@@ -88,15 +90,21 @@ Se o projeto estiver configurado corretamente, você verá a execução da calcu
 
 A calculadora aceita expressões como:
 
-```
-a = 5;
-b = a + 3;
-print(b);
-```
-
-Ela irá interpretar a atribuição e imprimir o resultado corretamente.
-
----
+| Entrada                  | Resultado Esperado           | Observações                                                      |
+|--------------------------|-------------------------------|------------------------------------------------------------------|
+| `9 + 8`                  | `Resultado da expressão: 17.0` | Expressão simples de adição                                        |
+| `10 - 2 * 3`             | `Resultado da expressão: 4.0`  | Expressão com operadores de adição e multiplicação                  |
+| `4 * (6 + 2)`            | `Resultado da expressão: 32.0` | Expressão com parênteses e multiplicação                           |
+| `(4 + 6) * 2`            | `Resultado da expressão: 20.0` | Expressão com parênteses e multiplicação                           |
+| `8 / 4`                  | `Resultado da expressão: 2.0`  | Expressão simples de divisão                                      |
+| `4 + 6 * 2 - 8 / 4`      | `Resultado da expressão: 14.0` | Expressão com operadores de adição, multiplicação e divisão       |
+| `print(4 + 6)`           | `Resultado da expressão: 10.0` | Comando de impressão com adição                                   |
+| `print(3 + 5 * 2 - 8 / 4)` | `Resultado da expressão: 7.0` | Comando de impressão com operadores de adição, multiplicação e divisão |
+| `print(4 + 6 * 2 - 8 / 4)` | `Resultado da expressão: 14.0` | Comando de impressão com operadores de adição, multiplicação e divisão |
+| `3 + 5 * (2 - 1`         | `Erro de sintaxe na linha 1:13 missing ')' at '\n'` | Parênteses não fechados corretamente                                |
+| `8 & 4`                  | `Erro de sintaxe na linha 1:8 token recognition error at: '&'` | Operador não reconhecido                                        |
+| `(4 + 6 * 2`            | `Erro de sintaxe na linha 1:13 missing ')' at '\n'` | Parênteses não fechados corretamente                                |
+| `4 + (6 * 2`            | `Erro de sintaxe na linha 1:10 missing ')' at '\n'` | Parênteses não fechados corretamente                                |
 
 ## 🔗 Links úteis
 
