@@ -46,10 +46,10 @@ alias grun='java org.antlr.v4.gui.TestRig'
 
 ## 🧱 Passo 2: Gerar Lexer e Parser a partir da gramática `.g4`
 
-Neste repositório, os arquivos 'Lexer' e 'Parser' já estão gerados no diretório `src/antlr4`. Caso queira gerá-los novamente, apenas garanta que estejam dentro do pacote 'antlr4'. Para garantir que os arquivos sejam gerados no pacote correto, use o comando:
+Neste repositório, os arquivos 'Lexer' e 'Parser' já estão gerados no diretório `src/antlr4`. Caso queira gerá-los novamente, apenas garanta que estejam dentro do pacote 'antlr4'. Para garantir que os arquivos sejam gerados no pacote correto, use o comando abaixo estando dentro do diretório src:
 
 ```bash
-antlr4 -Dlanguage=Java Gramatica.g4 -o src/antlr4
+antlr4 -Dlanguage=Java Gramatica.g4 -o antlr4 
 ```
 
 ## 🎯 Passo 3: Compilar e Executar o Projeto

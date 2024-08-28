@@ -2,13 +2,11 @@ package main;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.HashMap;
 import org.antlr.v4.runtime.tree.ParseTree;
 import antlr4.GramaticaBaseListener;
 import antlr4.GramaticaParser;
 
 public class CalcListener extends GramaticaBaseListener {
-    private HashMap<String, Double> variables = new HashMap<>();
     private DecimalFormat df;
     private double result;
 
@@ -23,15 +21,11 @@ public class CalcListener extends GramaticaBaseListener {
     @Override
     public void exitPrintStmt(GramaticaParser.PrintStmtContext ctx) {
         result = evaluate(ctx.expr());
-        System.out.println("Resultado da expressão de impressão: " + df.format(result));
     }
 
     @Override
     public void exitAssign(GramaticaParser.AssignContext ctx) {
-        String id = ctx.ID().getText();
-        double value = evaluate(ctx.expr());
-        variables.put(id, value);
-        System.out.println("Atribuição: " + id + " = " + df.format(value));
+        // Removido: Não é mais necessário
     }
 
     public double getResult() {
@@ -60,13 +54,8 @@ public class CalcListener extends GramaticaBaseListener {
         } else if (ctx instanceof GramaticaParser.ParensContext) {
             return evaluate(ctx.getChild(1));
         } else if (ctx instanceof GramaticaParser.IdContext) {
-            String id = ctx.getText();
-            Double value = variables.get(id);
-            if (value == null) {
-                System.err.println("Erro: Variável '" + id + "' não declarada.");
-                return 0.0; // Valor padrão para variáveis não declaradas
-            }
-            return value;
+            // Removido: Não é mais necessário para variáveis
+            return 0.0;
         } else if (ctx instanceof GramaticaParser.NumberContext) {
             return Double.parseDouble(ctx.getText());
         } else {

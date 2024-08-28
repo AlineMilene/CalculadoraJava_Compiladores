@@ -29,8 +29,7 @@ public class CalcMain {
                 }
 
                 // Adiciona um comando print se a expressão não contiver um comando de impressão
-                // ou atribuição
-                if (!inputText.matches(".*\\b(print|input|\\w+\\s*=).*")) {
+                if (!inputText.matches(".*\\bprint\\(.*\\).*")) {
                     inputText = "print(" + inputText + ")";
                 }
 
@@ -58,8 +57,8 @@ public class CalcMain {
                 CalcListener listener = new CalcListener();
                 walker.walk(listener, tree);
 
-                // Exibe o resultado se a entrada não for um comando de atribuição
-                if (!inputText.matches(".*\\b(assign|input|print\\(.*\\)).*")) {
+                // Exibe o resultado da expressão processada
+                if (!inputText.matches(".*\\bprint\\(.*\\).*")) {
                     System.out.println("Resultado da expressão: " + listener.getResult());
                 }
             }
