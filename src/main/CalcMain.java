@@ -15,15 +15,12 @@ public class CalcMain {
             System.out.println("Digite suas expressões. Para sair, digite 'sair'.");
 
             while (true) {
-                StringBuilder inputBuilder = new StringBuilder();
-                String line;
+                String inputText;
 
-                // Leitura de múltiplas linhas
-                while ((line = reader.readLine()) != null && !line.trim().isEmpty()) {
-                    inputBuilder.append(line).append("\n");
-                }
+                // Leitura da expressão do usuário
+                System.out.print("> ");
+                inputText = reader.readLine().trim();
 
-                String inputText = inputBuilder.toString().trim();
                 if (inputText.equalsIgnoreCase("sair")) {
                     break;
                 }
@@ -33,10 +30,8 @@ public class CalcMain {
                     inputText = "print(" + inputText + ")";
                 }
 
-                // Adiciona uma quebra de linha no final
-                if (!inputText.endsWith("\n")) {
-                    inputText += "\n";
-                }
+                // Adiciona uma quebra de linha no final da expressão
+                inputText = inputText + "\n";
 
                 CharStream input = CharStreams.fromString(inputText);
                 GramaticaLexer lexer = new GramaticaLexer(input);
@@ -57,10 +52,10 @@ public class CalcMain {
                 CalcListener listener = new CalcListener();
                 walker.walk(listener, tree);
 
-                // Exibe o resultado da expressão processada
-                if (!inputText.matches(".*\\bprint\\(.*\\).*")) {
-                    System.out.println("Resultado da expressão: " + listener.getResult());
-                }
+                // Sempre exibe o resultado da expressão processada
+                System.out.println("Resultado da expressão: " + listener.getResult());
+
+                System.out.println(); // Linha em branco para separar a saída
             }
         } catch (IOException e) {
             e.printStackTrace();
