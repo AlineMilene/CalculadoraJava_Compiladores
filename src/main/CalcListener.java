@@ -49,9 +49,6 @@ public class CalcListener extends GramaticaBaseListener {
             }
         } else if (ctx instanceof GramaticaParser.ParensContext) {
             return evaluate(ctx.getChild(1));
-        } else if (ctx instanceof GramaticaParser.IdContext) {
-            // Não é mais necessário para variáveis
-            return 0.0;
         } else if (ctx instanceof GramaticaParser.NumberContext) {
             return Double.parseDouble(ctx.getText());
         } else {
