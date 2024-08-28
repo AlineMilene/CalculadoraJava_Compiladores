@@ -1,25 +1,21 @@
 grammar Gramatica;
 
 // Definindo a regra inicial
-prog:   stat+ ; // Um programa é composto de uma ou mais declarações (stat)
+prog:   stat+ ; // Um programa ï¿½ composto de uma ou mais declaraï¿½ï¿½es (stat)
 
-// Declarações
-stat:   expr NEWLINE                # printExpr  // expressão com nova linha
-    |   ID '=' expr NEWLINE         # assign     // atribuição de variável
-    |   'print' '(' expr ')' NEWLINE # printStmt // comando de impressão
-    |   'input' '(' ID ')' NEWLINE   # inputStmt // comando de leitura
+// Declaraï¿½ï¿½es
+stat:   expr NEWLINE                # printExpr  // expressï¿½o com nova linha
+    |   'print' '(' expr ')' NEWLINE # printStmt // comando de impressï¿½o
     ;
 
-// Expressões
-expr:   expr ('*' | '/') expr       # MulDiv    // multiplicação ou divisão
-    |   expr ('+' | '-') expr       # AddSub    // adição ou subtração
-    |   '(' expr ')'                # Parens    // parênteses
-    |   ID                          # Id        // variável
-    |   NUMBER                      # Number    // número
+// Expressï¿½es
+expr:   expr ('*' | '/') expr       # MulDiv    // multiplicaï¿½ï¿½o ou divisï¿½o
+    |   expr ('+' | '-') expr       # AddSub    // adiï¿½ï¿½o ou subtraï¿½ï¿½o
+    |   '(' expr ')'                # Parens    // parï¿½nteses
+    |   NUMBER                      # Number    // nï¿½mero
     ;
 
 // Tokens
-ID      : [a-zA-Z]+ ;               // Identificador (variável)
-NUMBER  : [0-9]+ ('.' [0-9]+)? ;    // Números inteiros ou decimais
+NUMBER  : [0-9]+ ('.' [0-9]+)? ;    // Nï¿½meros inteiros ou decimais
 NEWLINE : [\r\n]+ ;                 // Quebra de linha
-WS      : [ \t]+ -> skip ;          // Espaços em branco são ignorados
+WS      : [ \t]+ -> skip ;          // Espaï¿½os em branco sï¿½o ignorados
