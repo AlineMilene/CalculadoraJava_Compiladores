@@ -58,7 +58,7 @@ antlr4 -Dlanguage=Java Gramatica.g4 -o antlr4
 
 ### Compilar o Código
 
-Para compilar o código-fonte, use o comando `javac`:
+Para compilar o código-fonte, use o comando `javac` dentro do diretório projeto `CalculadoraJava_Compiladores`:
 
 ```bash
 javac -d bin -cp C:\antlr\antlr-4.13.2-complete.jar src\main\*.java src\antlr4\*.java
@@ -66,7 +66,7 @@ javac -d bin -cp C:\antlr\antlr-4.13.2-complete.jar src\main\*.java src\antlr4\*
 
 ### Linha de Comando
 
-Após compilar, execute a classe `CalcMain` com:
+Após compilar e ainda dentro do diretório projeto `CalculadoraJava_Compiladores`, execute a classe `CalcMain` com:
 
 ```bash
 java -cp bin;C:\antlr\antlr-4.13.2-complete.jar main.CalcMain
